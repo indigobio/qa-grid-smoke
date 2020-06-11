@@ -15,7 +15,7 @@ When(/^I browse to google using (chrome|firefox) in selenium grid identified by 
 
   #$stdout.write ENV['GOOG_CHROMOPTIONS_ARGS']
 
-  goog_chromeoptions_args = ENV['GOOG_CHROMOPTIONS_ARGS'].split(' ')
+  goog_chromeoptions_args = ENV['GOOG_CHROMOPTIONS_ARGS'].nil? ? [] : ENV['GOOG_CHROMOPTIONS_ARGS'].split(' ')
 
   caps_chrome = { "goog:chromeOptions" => {"args" => goog_chromeoptions_args } }
 
