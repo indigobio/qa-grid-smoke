@@ -10,7 +10,7 @@ pipeline {
 
     parameters {
         string(name: 'GIT_BRANCH', description: '', defaultValue: 'master' )
-        string(name: 'GRID_URL', description: 'address of remote grid', defaultValue: ' http://selenium-hub.ci.indigo:4444/wd/hub' )
+        string(name: 'GRID_URL', description: 'address of remote grid', defaultValue: 'http://selenium-hub.ci.indigo:4444/wd/hub' )
         string(name: 'CHROME_BROWSER_OPTS', description: 'chrome browser options.', defaultValue: '' )
         string(name: 'FIREFOX_BROWSER_OPTS', description: 'firefox browser options.', defaultValue: '' )
 
