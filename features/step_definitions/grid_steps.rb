@@ -13,11 +13,12 @@ When(/^I browse to google using (chrome|firefox) in selenium grid identified by 
   # https://chromedriver.chromium.org/capabilities
   # https://peter.sh/experiments/chromium-command-line-switches/
 
-  $stdout.write ENV['BROWSER_OPTIONS']
+  $stdout.write ENV['GOOG_CHROMOPTIONS_ARGS']
 
-  caps_chrome = JSON.parse( ENV['BROWSER_OPTIONS'] )
+  #GOOG_CHROMOPTIONS_ARGS.sp
+  #caps_chrome = JSON.parse( ENV['BROWSER_OPTIONS'] )
 
-  #caps_chrome = { "goog:chromeOptions" => {"args" => [ "--no-sandbox", "--headless" ] } }
+  caps_chrome = { "goog:chromeOptions" => {"args" => [ "--no-sandbox", "--headless" ] } }
 
   caps = case browser
            when 'chrome'
