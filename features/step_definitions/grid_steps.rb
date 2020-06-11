@@ -1,5 +1,6 @@
 require 'selenium-webdriver'
 require 'rspec/expectations'
+require 'json'
 
 When(/^I browse to google using (chrome|firefox) in selenium grid identified by GRID_SELENIUM env var then title should be 'Google'$/) do |browser|
 
@@ -14,7 +15,9 @@ When(/^I browse to google using (chrome|firefox) in selenium grid identified by 
 
   $stdout.write ENV['BROWSER_OPTIONS']
 
-  caps_chrome = { "goog:chromeOptions" => {"args" => [ "--no-sandbox", "--headless" ] } }
+  caps_chrome = JSON.parse( ENV['BROWSER_OPTIONS'] )
+
+  #caps_chrome = { "goog:chromeOptions" => {"args" => [ "--no-sandbox", "--headless" ] } }
 
   caps = case browser
            when 'chrome'
