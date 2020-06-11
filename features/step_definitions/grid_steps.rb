@@ -1,5 +1,6 @@
 require 'selenium-webdriver'
 require 'rspec/expectations'
+require 'json'
 
 When(/^I browse to google using (chrome|firefox) in selenium grid identified by GRID_SELENIUM env var then title should be 'Google'$/) do |browser|
 
@@ -9,9 +10,18 @@ When(/^I browse to google using (chrome|firefox) in selenium grid identified by 
     raise "must define GRID_SELENIUM env var"
   end
 
+  # https://chromedriver.chromium.org/capabilities
+  # https://peter.sh/experiments/chromium-command-line-switches/
+
+  #$stdout.write ENV['GOOG_CHROMOPTIONS_ARGS']
+
+  goog_chromeoptions_args = ENV['GOOG_CHROMOPTIONS_ARGS'].nil? ? [] : ENV['GOOG_CHROMOPTIONS_ARGS'].split(' ')
+
+  caps_chrome = { "goog:chromeOptions" => {"args" => goog_chromeoptions_args } }
+
   caps = case browser
            when 'chrome'
-             Selenium::WebDriver::Remote::Capabilities.chrome()
+             Selenium::WebDriver::Remote::Capabilities.chrome(caps_chrome)
            when 'firefox'
              Selenium::WebDriver::Remote::Capabilities.firefox()
            else
