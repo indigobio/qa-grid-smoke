@@ -2,7 +2,8 @@
 
 def testsCommand() {
 
-    def retStr = "GRID_SELENIUM=${params.GRID_URL} BROWSER_OPTIONS={ 'goog:chromeOptions' => {'args' => [ '--no-sandbox', '--headless' ] } } bundle exec cucumber"
+    def foo = "{ 'goog:chromeOptions' => {'args' => [ '--no-sandbox', '--headless' ] } }"
+    def retStr = "GRID_SELENIUM=${params.GRID_URL} BROWSER_OPTIONS=${foo} bundle exec cucumber"
     return retStr
 }
 
