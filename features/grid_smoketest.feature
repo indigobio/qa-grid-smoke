@@ -7,4 +7,4 @@ Feature: Selenium Grid
     Examples:
       |browser|
       |chrome |
-      |firefox|
+#      |firefox|

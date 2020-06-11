@@ -9,9 +9,14 @@ When(/^I browse to google using (chrome|firefox) in selenium grid identified by 
     raise "must define GRID_SELENIUM env var"
   end
 
+  # https://chromedriver.chromium.org/capabilities
+  # https://peter.sh/experiments/chromium-command-line-switches/
+
+  caps_chrome = { "goog:chromeOptions" => {"args" => [ "--no-sandbox", "--headless" ] } }
+
   caps = case browser
            when 'chrome'
-             Selenium::WebDriver::Remote::Capabilities.chrome()
+             Selenium::WebDriver::Remote::Capabilities.chrome(caps_chrome)
            when 'firefox'
              Selenium::WebDriver::Remote::Capabilities.firefox()
            else
