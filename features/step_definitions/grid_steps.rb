@@ -15,10 +15,12 @@ When(/^I browse to google using (chrome|firefox) in selenium grid identified by 
 
   $stdout.write ENV['GOOG_CHROMOPTIONS_ARGS']
 
-  #GOOG_CHROMOPTIONS_ARGS.sp
+  goog_chromeoptions_args = ENV['GOOG_CHROMOPTIONS_ARGS'].split(' ')
+
   #caps_chrome = JSON.parse( ENV['BROWSER_OPTIONS'] )
 
-  caps_chrome = { "goog:chromeOptions" => {"args" => [ "--no-sandbox", "--headless" ] } }
+  caps_chrome = { "goog:chromeOptions" => {"args" => goog_chromeoptions_args } }
+  #caps_chrome = { "goog:chromeOptions" => {"args" => [ "--no-sandbox", "--headless" ] } }
 
   caps = case browser
            when 'chrome'
