@@ -13,9 +13,9 @@ class GridAPIclient
 
   def grid_api_hub
 
-    addr_wo_path = @addr.gsub('/wd/hub','')
-    url = "#{addr_wo_path}/grid/api/hub"
+    url = "#{@addr}/grid/api/hub"
 
+    @logger.info( url )
     x = request(type: :get, url: url, acceptable_codes: [200], content_type: :json, follow_redirects: true )
 
     @logger.info( x.inspect )

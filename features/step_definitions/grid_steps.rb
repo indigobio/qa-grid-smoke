@@ -12,8 +12,8 @@ When(/^I browse to google using (chrome|firefox) in selenium grid identified by 
     raise "must define GRID_SELENIUM env var"
   end
 
-  grid = GridAPIclient.new( addr: grid )
-  grid.grid_api_hub
+  grid_api = GridAPIclient.new( addr: grid.gsub('/wd/hub','') )
+  grid_api.grid_api_hub
 
   # https://chromedriver.chromium.org/capabilities
   # https://peter.sh/experiments/chromium-command-line-switches/
