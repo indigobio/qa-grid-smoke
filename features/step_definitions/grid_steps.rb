@@ -2,6 +2,8 @@ require 'selenium-webdriver'
 require 'rspec/expectations'
 require 'json'
 
+require_relative '../../grid_api_client'
+
 When(/^I browse to google using (chrome|firefox) in selenium grid identified by GRID_SELENIUM env var then title should be 'Google'$/) do |browser|
 
   grid = ENV['GRID_SELENIUM']
@@ -9,6 +11,9 @@ When(/^I browse to google using (chrome|firefox) in selenium grid identified by 
   if grid.nil?
     raise "must define GRID_SELENIUM env var"
   end
+
+  grid = GridAPIclient.new( addr: grid )
+  grid.grid_api_hub
 
   # https://chromedriver.chromium.org/capabilities
   # https://peter.sh/experiments/chromium-command-line-switches/
