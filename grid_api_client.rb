@@ -8,6 +8,8 @@ class GridAPIclient
     @addr = addr
 
     @logger = Logging.logger['GridAPIclient']
+    @logger.level = :debug
+    @logger.add_appenders Logging.appenders.stdout
 
   end
 
