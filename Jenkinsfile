@@ -2,7 +2,7 @@
 
 def testsCommand() {
 
-    def retStr = "GRID_SELENIUM=${env.GRID_SELENIUM} GOOG_CHROMOPTIONS_ARGS=\"${params.GOOG_CHROMOPTIONS_ARGS}\" bundle exec cucumber"
+    def retStr = "GRID_SELENIUM=${params.GRID_URL} GOOG_CHROMOPTIONS_ARGS=\"${params.GOOG_CHROMOPTIONS_ARGS}\" bundle exec cucumber"
     return retStr
 }
 
@@ -10,7 +10,7 @@ pipeline {
 
     parameters {
         string(name: 'GIT_BRANCH', description: '', defaultValue: 'master' )
-        //string(name: 'GRID_URL', description: 'address of remote grid', defaultValue: 'http://selenium-hub.ci.indigo:4444/wd/hub' )
+        string(name: 'GRID_URL', description: 'address of remote grid', defaultValue: 'http://selenium-hub.newci.indigo:4444/wd/hub' )
         string(name: 'GOOG_CHROMOPTIONS_ARGS', description: 'goog:chromeOptions -> args (as space-delimited string)', defaultValue: '--no-sandbox --headless' )
         string(name: 'FIREFOX_BROWSER_OPTS', description: 'firefox browser options.', defaultValue: '' )
 
