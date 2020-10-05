@@ -36,7 +36,7 @@ pipeline {
     }
 
     agent {
-        node { label 'oq' }
+        node { label 'build4' }
     }
 
      stages {
