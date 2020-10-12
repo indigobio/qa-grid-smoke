@@ -60,26 +60,26 @@ pipeline {
 //                      echo sh(returnStdout: true, script: 'env')
 //                  }
 
-                 checkout(
-                     changelog: false,
-                     poll: false,
-                     scm: [
-                          $class:                             'GitSCM',
-                          branches:                           [[name: params.GIT_BRANCH]],
-                          doGenerateSubmoduleConfigurations:  false,
-                          extensions: [
-                              [$class: 'RelativeTargetDirectory', relativeTargetDir: '.'],
-                              [$class: 'CloneOption', depth: 1, noTags: true, reference: '', shallow: true]
-                          ],
-                          submoduleCfg: [],
-                          userRemoteConfigs: [
-                              [
-                              credentialsId:  env.JENKINS_SECRETS_GITHUB_ID,
-                              url:            env.GIT_REPO
-                              ]
-                          ]
-                      ]
-                 )
+//                  checkout(
+//                      changelog: false,
+//                      poll: false,
+//                      scm: [
+//                           $class:                             'GitSCM',
+//                           branches:                           [[name: params.GIT_BRANCH]],
+//                           doGenerateSubmoduleConfigurations:  false,
+//                           extensions: [
+//                               [$class: 'RelativeTargetDirectory', relativeTargetDir: '.'],
+//                               [$class: 'CloneOption', depth: 1, noTags: true, reference: '', shallow: true]
+//                           ],
+//                           submoduleCfg: [],
+//                           userRemoteConfigs: [
+//                               [
+//                               credentialsId:  env.JENKINS_SECRETS_GITHUB_ID,
+//                               url:            env.GIT_REPO
+//                               ]
+//                           ]
+//                       ]
+//                  )
 
                  sh 'bundle install --quiet'
 
